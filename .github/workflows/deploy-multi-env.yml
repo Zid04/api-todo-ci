@@ -76,7 +76,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     environment:
       name: production
-      url: https://api-todo-veronique-prod.onrender.com
+      url: https://api-todo-ci-veronique-prod.onrender.com
 
     steps:
       - name: Checkout
@@ -110,7 +110,7 @@ jobs:
 
       - name: Health check Production
         run: |
-          response=$(curl -s -o /dev/null -w "%{http_code}" https://api-todo-veronique-prod.onrender.com/health)
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://api-todo-ci-veronique-prod.onrender.com/health)
           if [ $response -eq 200 ]; then
             echo "Production is healthy"
           else
@@ -131,4 +131,4 @@ jobs:
         run: |
           echo "Deployment to production complete!"
           echo "Version: ${{ steps.tag.outputs.version }}"
-          echo "URL: https://api-todo-veronique-prod.onrender.com"
+          echo "URL: https://api-todo-ci-veronique-prod.onrender.com"
