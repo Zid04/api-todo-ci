@@ -80,6 +80,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Fetch tags
+        run: git fetch --tags
+
       - name: Setup Git identity
         run: |
           git config user.name "GitHub Actions"
@@ -88,7 +91,7 @@ jobs:
       - name: Create version tag
         id: tag
         run: |
-          count=$(git tag | grep -c "^v")
+          count=$(git tag | grep -c "^v" || true)
           version="v1.0.$((count + 1))"
           echo "version=$version" >> $GITHUB_OUTPUT
           git tag -a "$version" -m "Release $version"
