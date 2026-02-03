@@ -11,8 +11,11 @@ let nextId = 3;
 // ========== ROUTES ==========
 // GET / - Page d'accueil
 app.get('/', (req, res) => {
+    const env = process.env.NODE_ENV || 'development';
  res.json({
- message: 'API TODO - Déploiement Automatique Fonctionne !',
+ message: 'API TODO - CI/CD Demo!',
+ environment: env, 
+ version:  '1.0.0',
  endpoints: {
  'GET /todos': 'Liste des todos',
  'GET /todos/:id': 'Un todo spécifique',
