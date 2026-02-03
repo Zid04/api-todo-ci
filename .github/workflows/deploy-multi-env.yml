@@ -66,6 +66,7 @@ jobs:
             echo "Staging is healthy"
           else
             echo "Staging health check returned $response"
+            exit 1
           fi
 
   # Job 3 : Deploy Production (seulement sur main)
