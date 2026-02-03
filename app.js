@@ -13,8 +13,8 @@ let nextId = 3;
 app.get('/', (req, res) => {
     const env = process.env.NODE_ENV || 'development';
  res.json({
- message: 'API TODO - CI/CD Demo',
- environment: env, // ← AJOUT
+ message: 'API TODO - CI/CD Demo!',
+ environment: env, 
  version:  '1.0.0',
  endpoints: {
  'GET /todos': 'Liste des todos',
